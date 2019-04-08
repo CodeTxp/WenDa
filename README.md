@@ -1,4 +1,5 @@
 # 记录学习java（牛客网高级项目）的历程
+## Day01
 ## 一、 学习利用idea将项目上传到github中去
 ### 1.创建本地仓库。
 ![创建本地仓库](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/20160317093849090.png)
