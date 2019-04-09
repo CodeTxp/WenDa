@@ -248,6 +248,82 @@ public class WendaService {
 @Autowired
 WendaService wendaService;
 ```
+### AOP：面向切面编程在程序开发中主要用来解决一些系统层面上的问题，比如日志，事务，权限等待
+#### 1.AOP的基本概念
+> (1)Aspect(切面):通常是一个类，里面可以定义切入点和通知
+
+> (2)JointPoint(连接点):程序执行过程中明确的点，一般是方法的调用
+
+> (3)Advice(通知):AOP在特定的切入点上执行的增强处理，有before,after,afterReturning,afterThrowing,around
+
+> (4)Pointcut(切入点):就是带有通知的连接点，在程序中主要体现为书写切入点表达式
+
+> (5)AOP代理：AOP框架创建的对象，代理就是目标对象的加强。Spring中的AOP代理可以使JDK动态代理，也可以是CGLIB代理，前者基于接口，后者基于子类
 
 
+#### 2.通知类型介绍
+> (1)Before:在目标方法被调用之前做增强处理,@Before只需要指定切入点表达式即可
 
+> (2)AfterReturning:在目标方法正常完成后做增强,@AfterReturning除了指定切入点表达式后，还可以指定一个返回值形参名returning,代表目标方法的返回值
+
+> (3)AfterThrowing:主要用来处理程序中未处理的异常,@AfterThrowing除了指定切入点表达式后，还可以指定一个throwing的返回值形参名,可以通过该形参名来访问目标方法中所抛出的异常对象
+
+> (4)After:在目标方法完成之后做增强，无论目标方法时候成功完成。@After可以指定一个切入点表达式
+
+> (5)Around:环绕通知,在目标方法完成前后做增强处理,环绕通知是最重要的通知类型,像事务,日志等都是环绕通知,注意编程中核心是一个ProceedingJoinPoint
+
+#### 3.Spring AOP支持的切入点指示符：
+> execution:用来匹配执行方法的连接点
+
+>> A:@Pointcut("execution(* com.aijava.springcode.service..*.*(..))")
+
+>> 第一个*表示匹配任意的方法返回值，..(两个点)表示零个或多个，上面的第一个..表示service包及其子包,第二个*表示所有类,第三个*表示所有方法，第二个..表示方法的任意参数个数
+
+>> B:@Pointcut("within(com.aijava.springcode.service.*)")
+
+>> within限定匹配方法的连接点,上面的就是表示匹配service包下的任意连接点
+
+>> C:@Pointcut("this(com.aijava.springcode.service.UserService)")
+
+>>this用来限定AOP代理必须是指定类型的实例，如上，指定了一个特定的实例，就是UserService
+
+>> D:@Pointcut("bean(userService)")
+
+>> bean也是非常常用的,bean可以指定IOC容器中的bean的名称
+
+
+#### 4.举例子
+```
+package com.txp.wenda.aspect;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import java.util.Date;
+
+@Aspect
+@Component
+public class LogAspect {
+    private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
+    @Before("execution(* com.txp.wenda.controller.*Controller.*(..))")
+    public  void beforeMethod(JoinPoint joinPoint){
+        StringBuilder sb=new StringBuilder();
+        for (Object arg:joinPoint.getArgs()){
+            if (arg != null) {
+                sb.append("arg:" + arg.toString() + "|");
+            }
+        }
+        logger.info("before method "+sb.toString()+new Date());
+    }
+
+    @After("execution(* com.txp.wenda.controller.indexController.*(..))")
+    public  void afterMethod(){
+        logger.info("after method"+new Date());
+    }
+}
+```
+> 这个代码中，的beforeMethod在com.txp.wenda.controller包下的所有匹配***Controller**类中的方法， afterMethod在com.txp.wenda.controller.indexController中的方法后进行运行。中定义的JoinPoint可以获取输入参数。
+![参数](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/360%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9B%BE20190409150325.jpg)
