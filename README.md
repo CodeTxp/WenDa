@@ -215,6 +215,39 @@ public String getDescription(){
 ## 3、Cotroller的学习：上面已经介绍了这里不再介绍了
 
 ## 4、AOP和IoC的学习
+### IoC：控制反转 -> 在面向对象设计的软件系统中，它的底层都是由N个对象构成的，各个对象之间通过相互合作，最终实现系统地业务逻辑。
+![耦合](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/360%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9B%BE20190409143325.jpg)
+> 图1中描述的就是这样的一个齿轮组，它拥有多个独立的齿轮，这些齿轮相互啮合在一起，协同工作，共同完成某项任务。我们可以看到，在这样的齿轮组中，如果有一个齿轮出了问题，就可能会影响到整个齿轮组的正常运转。齿轮组中齿轮之间的啮合关系,与软件系统中对象之间的耦合关系非常相似。对象之间的耦合关系是无法避免的，也是必要的，这是协同工作的基础。
+
+#### 1.什么是IOC:Inversion of Control的缩写，多数书籍翻译成“控制反转”,它的借助于“第三方”实现具有依赖关系的对象之间的解耦。
+![解耦](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/360%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9B%BE20190409143406.jpg)
+> 由于引进了中间位置的“第三方”，也就是IOC容器，使得A、B、C、D这4个对象没有了耦合关系，齿轮之间的传动全部依靠“第三方”了，全部对象的控制权全部上缴给“第三方”IOC容器，所以，IOC容器成了整个系统的关键核心，它起到了一种类似“粘合剂”的作用，把系统中的所有对象粘合在一起发挥作用，如果没有这个“粘合剂”，对象与对象之间会彼此失去联系，这就是有人把IOC容器比喻成“粘合剂”的由来。 软件系统在引入IOC容器之后，如图所示，由于IOC容器的加入，对象A与对象B之间失去了直接联系，所以，当对象A运行到需要对象B的时候，IOC容器会主动创建一个对象B注入到对象A需要的地方。
+### 对象A获得依赖对象B的过程,由主动行为变为了被动行为，控制权颠倒过来了，这就是“控制反转”这个名称的由来。
+
+#### 2.IOC也叫依赖注入(DI)
+>  所谓依赖注入，就是由IOC容器在运行期间，动态地将某种依赖关系注入到对象之中。
+
+在这个课程的学习过程中：
+传统的软件关系：
+ ```
+   WendaService wendaService=new WendaService();
+```
+在需要WendaService对象的地方直接new一个对象出来，变为
+为被**被依赖对象**加上个 @Service注解
+在需要的地方直接 **@Autowired**自动注解进去就好了
+```
+被依赖对象
+@Service
+public class WendaService {
+    public String getMessage(int userId){
+        return "Hello Message: "+String.valueOf(userId);
+    }
+}
+
+需要的地方
+@Autowired
+WendaService wendaService;
+```
 
 
 
