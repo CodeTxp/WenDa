@@ -17,9 +17,12 @@
 > ##### [thymeleaf的简单的使用](#jump6)
 ### [Cotroller的学习](#jump7)
 ### [AOP和IoC的学习](#jump8)
-> #### [IoC](#jump9)
-> #### [AOP](#jump10)
 
+> ##### [IoC](#jump8)
+> ##### [AOP](#jump10)
+
+
+--------------------------------------------------
 ##  <span id="jump1"> 1、来看怎么建立一个SpringBoot工程（有两种方式）</span>
 ### <span id="jump2"> （1）.可以通过Idea来创建一个SpringBoot项目</span>
 #### 第一步
