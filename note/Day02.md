@@ -8,9 +8,20 @@
 > * AOP的学习
 > * IoC学习
 
+## 目录
+### [建立一个SpringBoot工程（有两种方式）](#jump1)
+> #### [通过Idea来创建一个SpringBoot项目](#jump2)
+> #### [也可以通过这种方式](#jump3)
+### [thymeleaf语言](#jump4)
+> ##### [SpringBoot的使用](#jump5)
+> ##### [thymeleaf的简单的使用](#jump6)
+### [Cotroller的学习](#jump7)
+### [AOP和IoC的学习](#jump8)
+> #### [IoC](#jump9)
+> #### [AOP](#jump10)
 
-##  1、来看怎么建立一个SpringBoot工程（有两种方式）
-### （1）.可以通过Idea来创建一个SpringBoot项目
+##  <span id="jump1"> 1、来看怎么建立一个SpringBoot工程（有两种方式）</span>
+### <span id="jump2"> （1）.可以通过Idea来创建一个SpringBoot项目</span>
 #### 第一步
 选择File –> New –> Project –>Spring Initialer –> 点击Next 
 ![第一步](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/360%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9B%BE20190408163020.jpg)
@@ -23,12 +34,12 @@
 #### 第四部
 finish
 ![第4步](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/360%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9B%BE20190408171127.jpg)
-### （2）.也可以通过这种方式
+### <span id="jump3">（2）.也可以通过这种方式</span>
 ![第4步](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/1316820-10b71e8e5cdfffc1.png)
 
 
-## 2、Velocity模板语言的学习以及Springboot的使用(这里学习的是thymeleaf语言，因为Springboot从1.4之后开始就不再支持Velocity)
-### 1.先看看SpringBoot的使用
+##  <span id="jump4">2、Velocity模板语言的学习以及Springboot的使用(这里学习的是thymeleaf语言，因为Springboot从1.4之后开始就不再支持Velocity) </span>
+### <span id="jump5">1.先看看SpringBoot的使用</span>
 #### @Controller 处理http请求
 例如
 ```java
@@ -77,7 +88,7 @@ Profile page of user, 2, t:1, k:zz
 Profile page of user, 2, t:9, k:9
 
 
-### 2.借着来看看thymeleaf的简单的使用
+### <span id="jump6">2.借着来看看thymeleaf的简单的使用</span>
 #### 首先是加入需要额依赖
 ```
        <dependency>
@@ -194,10 +205,10 @@ public String getDescription(){
 ```
 到此为止，thymelaf差不多就这样简单的介绍完了，常用的，还有一些其他的标签后面用到的通过网上学习。
 
-## 3、Cotroller的学习：上面已经介绍了这里不再介绍了
+## <span id="jump7">3、Cotroller的学习：上面已经介绍了这里不再介绍了</span>
 
-## 4、AOP和IoC的学习
-### IoC：控制反转 -> 在面向对象设计的软件系统中，它的底层都是由N个对象构成的，各个对象之间通过相互合作，最终实现系统地业务逻辑。
+## <span id="jump8">4、AOP和IoC的学习</span>
+### <span id="jump9">IoC：控制反转 -> 在面向对象设计的软件系统中，它的底层都是由N个对象构成的，各个对象之间通过相互合作，最终实现系统地业务逻辑。</span>
 ![耦合](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/360%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9B%BE20190409143325.jpg)
 > 图1中描述的就是这样的一个齿轮组，它拥有多个独立的齿轮，这些齿轮相互啮合在一起，协同工作，共同完成某项任务。我们可以看到，在这样的齿轮组中，如果有一个齿轮出了问题，就可能会影响到整个齿轮组的正常运转。齿轮组中齿轮之间的啮合关系,与软件系统中对象之间的耦合关系非常相似。对象之间的耦合关系是无法避免的，也是必要的，这是协同工作的基础。
 
@@ -230,7 +241,7 @@ public class WendaService {
 @Autowired
 WendaService wendaService;
 ```
-### AOP：面向切面编程在程序开发中主要用来解决一些系统层面上的问题，比如日志，事务，权限等待
+### <span id="jump10">AOP：面向切面编程在程序开发中主要用来解决一些系统层面上的问题，比如日志，事务，权限等待</span>
 #### 1.AOP的基本概念
 > (1)Aspect(切面):通常是一个类，里面可以定义切入点和通知
 
