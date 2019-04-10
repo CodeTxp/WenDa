@@ -8,7 +8,7 @@
   > ##### [3.2. 在本地配置远程仓库](#jump6)
 
 ## <span id="jump1"> 一、 学习利用idea将项目上传到github中去 </span>
-### <span id="jump2">3.项目远程提交</span>
+### <span id="jump2">1.创建本地仓库</span>
 ![创建本地仓库](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/20160317093849090.png)
 
 ###  <span id="jump3">2.提交代码到git</span> 
