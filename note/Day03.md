@@ -6,7 +6,7 @@
 ### MyBatis的集成
 ### 1. 步骤
  1. application.properties增加spring配置数据库链接地址
-  ```sh
+  ```properties
  # url path
 server.port=8080
 server.servlet.context-path=/
@@ -32,7 +32,7 @@ mybatis.mapperLocations=classpath:mapper/*.xml
  ```
  这里需要一个mybatis-config.xml，如下
  
-  ```sh
+  ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -54,7 +54,7 @@ mybatis.mapperLocations=classpath:mapper/*.xml
  ```
  
  2. pom.xml引入mybatis-spring-boot-starter和mysql-connector-java
- ```sh
+ ```xml
        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -80,7 +80,7 @@ mybatis.mapperLocations=classpath:mapper/*.xml
 1. JavaBean的编写
 
 User：
- ```sh
+ ```java
 public class User {
     private int id;
     private String name;
@@ -103,7 +103,7 @@ public class User {
  ```
  
  Question：
- ```sh
+ ```java
  public class Question {
     private int id;
     private String title;
@@ -121,7 +121,7 @@ public class User {
  2. DAO的编写
  
  UserDAO：
- ```sh
+ ```java
 @Mapper
 @Component
 public interface UserDAO {
@@ -146,7 +146,7 @@ public interface UserDAO {
  ```
  
  QuestionDAO：
- ```sh 
+ ```java
 @Mapper
 @Component//和mybatis关联的一个dao
 public interface QuestionDAO {
@@ -171,7 +171,7 @@ public interface QuestionDAO {
  ```
  **其中selectLatestQuestions方法，结合了mapper.xml文件**
  QuestionDAO.xml
-  ```sh
+  ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
@@ -196,7 +196,7 @@ public interface QuestionDAO {
  
 3. Service的编写
 UserService:
- ```sh
+ ```java
 @Service
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -210,7 +210,7 @@ public class UserService {
  ```
  
 QuestionService:
- ```sh
+ ```java
 @Service
 public class QuestionService {
     @Autowired
@@ -223,7 +223,7 @@ public class QuestionService {
  ```
 
  4. Controller的编写
-```sh
+```java
 @Controller
 public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
