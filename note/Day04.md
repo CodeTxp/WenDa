@@ -18,7 +18,7 @@ web开发发展至今，cookie和session的使用已经出现了一些非常成�
  ## <font size=6> ViewObject </font>
  方便传递任何数据到thymeleaf
  
- ```sh
+ ```java
  public class ViewObject {
     private Map<String, Object> objs = new HashMap<String, Object>();
     public void set(String key, Object value) {
@@ -64,7 +64,7 @@ web开发发展至今，cookie和session的使用已经出现了一些非常成�
 ![拦截器](https://github.com/CodeTxp/Pictures/blob/master/%EF%BC%88%E7%89%9B%E5%AE%A2%E7%BD%91%EF%BC%89%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E6%8B%A6%E6%88%AA%E5%99%A8.png)
 ### PassportInterceptor拦截器的定义
 
- ```sh
+ ```java
 @Component
 public class PassportInterceptor implements HandlerInterceptor {
     @Autowired
@@ -117,7 +117,7 @@ public class PassportInterceptor implements HandlerInterceptor {
 
 ### LoginRequiredInterceptor拦截器的定义
 
-```sh
+```java
 @Component
 public class LoginRequiredInterceptor implements HandlerInterceptor {
     @Autowired
@@ -139,7 +139,7 @@ public class LoginRequiredInterceptor implements HandlerInterceptor {
 ```
 
 ### 配置拦截器
-```sh
+```java
 @Component
 public class WendaWebConfiguration implements WebMvcConfigurer {
     @Autowired
@@ -161,7 +161,7 @@ public class WendaWebConfiguration implements WebMvcConfigurer {
 
 
 ## UserService的实现（包含了登录和注册的相关服务）
- ```sh
+ ```java
 @Service
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -249,7 +249,7 @@ public class UserService {
 }
  ```
  ## LoginController的实现
- ```sh 
+ ```java
 @Controller
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
