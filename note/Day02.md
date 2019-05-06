@@ -45,7 +45,7 @@ finish
 ### <span id="jump5">1.先看看SpringBoot的使用</span>
 #### @Controller 处理http请求
 例如
-```java
+``` java
     @RequestMapping(path = {"/","/index"}, method = {RequestMethod.GET})
     @ResponseBody
     public String index(HttpSession session) {
@@ -69,7 +69,7 @@ finish
   
 #### 其他需要注意的是
 
-``` 
+```java
     @RequestMapping(path = {"/profile/{groupId}/{userId}"})
     @ResponseBody
     public String profile(@PathVariable("userId") int userId,
@@ -93,7 +93,7 @@ Profile page of user, 2, t:9, k:9
 
 ### <span id="jump6">2.借着来看看thymeleaf的简单的使用</span>
 #### 首先是加入需要额依赖
-```
+```xml
        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -101,7 +101,7 @@ Profile page of user, 2, t:9, k:9
 ```
 
 #### 再来看一段代码
-```
+```java
     @RequestMapping("/vmstart")
     public String template(Model model) {
         model.addAttribute("value1", "111111");
@@ -127,13 +127,13 @@ Profile page of user, 2, t:9, k:9
 - model 这个参数主要是用于向模板传递数据，我们这里使用的模板是thymeleaf。
 
 - 首先传递一个普通的value， 如上代码
-```
+```html
      <p  th:text="*{value1}"/>
      或者
      <p  th:text="${value2}"/>
 ```
 - 然后传递一个List类型，如上代码，这里在模板采用表格来接受
-```
+```xml
 Colors表
 <table>
     <tr><td>No.</td><td>Color</td><td>Count</td></tr>
@@ -147,7 +147,7 @@ Colors表
 <br/>
 
 - 传递一个Map类型数据，如上代码，这里用表格来接受
-```
+```xml
 <!--map输出-->
 Map
 <table>
@@ -162,7 +162,7 @@ Map
 ```
 
 - 传递一个javaBean类型数据 比如User类
-```
+```html
 <!--User输出 1-->
 <div>
     <p th:text="'用户编号：' + ${user.id}"/>
@@ -185,19 +185,19 @@ Map
 
 其中description并不是User的字段，知识我们在User中定义的一个方法：
 
-```
+```java
 public String getDescription(){
         return "This is "+username;
 }
 ```
 - 还可以通过引入其他的html文件作为header和footer，方法如下：
-```
+```html
 <div th:replace="start/header :: myheader"></div>
 =================================================
 <div th:include="start/header :: myheader"></div>
 ```
 被引入的html是start下的header.html文件中的定义th:fragment标签中的内容：如下：
-```
+```html
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
@@ -225,13 +225,13 @@ public String getDescription(){
 
 在这个课程的学习过程中：
 传统的软件关系：
- ```
+ ```java
    WendaService wendaService=new WendaService();
 ```
 在需要WendaService对象的地方直接new一个对象出来，变为
 为被**被依赖对象**加上个 @Service注解
 在需要的地方直接 **@Autowired**自动注解进去就好了
-```
+```java
 被依赖对象
 @Service
 public class WendaService {
@@ -289,7 +289,7 @@ WendaService wendaService;
 
 
 #### 4.举例子
-```
+```java
 package com.txp.wenda.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
