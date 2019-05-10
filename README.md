@@ -12,6 +12,6 @@
 
 ## [Day06](https://github.com/CodeTxp/WenDa/blob/master/note/Day06.md)
 
-## [Day07](https://github.com/CodeTxp/WenDa/edit/master/note/Day07.md)
+## [Day07](https://github.com/CodeTxp/WenDa/blob/master/note/Day07.md)
 
 ## [Day08](https://github.com/CodeTxp/WenDa/blob/master/note/Day08.md)
